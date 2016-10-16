@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="/index.css" type="text/css" rel="stylesheet">
+    <title>Title</title>
+</head>
+<body>
+<div class="header">
+    <h1 class="logo">LookUp</h1>
+    <div class="sign_up">
+        <h3 class="sub_logo_text">Sing Up</h3>
+    </div>
+    <div class="log_in">
+        <h3 class="sub_logo_text">Log In</h3>
+    </div>
+</div>
+<div class="body">
+    {% if userList %}
+        <ul>
+            {% for user in userList %}
+                <li>{{ user.name }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No user</p>
+    {% endif %}
+</div>
+<div class="footer">
+    <h3 class="sub_logo_text">Contacts</h3>
+    <h3 class="sub_logo_text">FAQ</h3>
+    <h3 class="sub_logo_text">Rules</h3>
+    <h3 class="sub_logo_text">Advertising</h3>
+</div>
+</body>
+</html>
