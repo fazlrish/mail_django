@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="/index.css" type="text/css" rel="stylesheet">
-    <title>Title</title>
+    <link href="index.css" type="text/css" rel="stylesheet">
+    <title>Main</title>
 </head>
 <body>
 <div class="header">
@@ -15,17 +15,9 @@
         <h3 class="sub_logo_text">Log In</h3>
     </div>
 </div>
-<div class="body">
-    {% if userList %}
-        <ul>
-            {% for user in userList %}
-                <li>{{ user.name }}</li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>No user</p>
-    {% endif %}
-</div>
+{% block title %}{% endblock %}
+{% block content %}
+{% endblock %}
 <div class="footer">
     <h3 class="sub_logo_text">Contacts</h3>
     <h3 class="sub_logo_text">FAQ</h3>
