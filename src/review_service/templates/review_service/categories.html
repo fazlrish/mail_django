@@ -10,7 +10,7 @@
         <ul>
             {% for category in categories %}
                 <li>
-                    {{ category.name }}
+                    <a href="{% url 'reviews:category' category.id %}"> {{ category.name }} </a>
                 </li>
             {% endfor %}
         </ul>

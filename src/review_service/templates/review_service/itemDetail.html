@@ -2,9 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Item Detail</title>
 </head>
 <body>
-$END$
+{% block content %}
+    <h1>{{ item.name }}</h1>
+    <p>{{ item.description }}</p>
+    {% if reviews %}
+        <ul>
+            {% for review in reviews %}
+                <li><p>{{ review.text }}</p></li></br>
+                <li><p>{{ review.createdAt }}</p></li></br>
+                <li><p><a href="{% url 'user' review.user.id %}">{{ review.user }}</a></p></li></br>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No reviews</p>
+    {% endif %}
+
+
+{% endblock %}
 </body>
 </html>

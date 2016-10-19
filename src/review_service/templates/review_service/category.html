@@ -10,12 +10,14 @@
         <ul>
             {% for item in categoryItemList %}
                 <li>
-                    <a href="/category/{{ item.id }}"> {{ item.name }} </a>
+                    <a href="{% url 'item' item.id %}">
+                        {{ item.name }}
+                    </a>
                 </li>
             {% endfor %}
         </ul>
     {% else %}
-        <p>No categories</p>
+        <p>No category item</p>
     {% endif %}
 {% endblock %}
 </body>

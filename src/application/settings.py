@@ -85,6 +85,8 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
 
+AUTH_USER_MODEL = 'review_service.User'
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -120,4 +122,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = '/home/major/workplace/python/mail_course/look_up_project/collected_static/'
-STATICFILES_DIRS = ('/home/major/workplace/python/mail_course/look_up_project/src/static/', )
+STATICFILES_DIRS = ('/home/major/workplace/python/mail_course/look_up_project/src/static/',)
