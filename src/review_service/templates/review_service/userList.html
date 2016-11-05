@@ -1,15 +1,12 @@
 <!DOCTYPE html>
+{% extends "./index.html" %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>UserList</title>
+    <title>{% block title %}List of Users{% endblock %}</title>
 </head>
 <body>
-
-{% extends "./index.html" %}
-{% block title %}List of Users{% endblock %}
 {% block content %}
-
     <div class="body">
         {% if userList %}
             <ul>

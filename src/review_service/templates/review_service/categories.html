@@ -1,8 +1,9 @@
 <!DOCTYPE html>
+{% extends "./index.html" %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Categories</title>
+    <title>{% block title %}Categories{% endblock %}</title>
 </head>
 <body>
 {% block content %}
@@ -10,7 +11,7 @@
         <ul>
             {% for category in categories %}
                 <li>
-                    <a href="{% url 'reviews:category' category.id %}"> {{ category.name }} </a>
+                    <a href="{% url 'review_service:category' category.id %}"> {{ category.name }} </a>
                 </li>
             {% endfor %}
         </ul>

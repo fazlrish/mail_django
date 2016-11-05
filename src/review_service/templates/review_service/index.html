@@ -2,27 +2,55 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="" type="text/css" rel="stylesheet">
-    <title>Main</title>
+    {% load static %}
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic" rel="stylesheet" type="text/css">
+    <link href="{% static "css/index.css" %}" type="text/css" rel="stylesheet">
+    <title>{% block title %}Main{% endblock %}</title>
 </head>
 <body>
-<div class="header">
-    <h1 class="logo">LookUp</h1>
-    <div class="sign_up">
-        <h3 class="sub_logo_text">Sing Up</h3>
-    </div>
-    <div class="log_in">
-        <h3 class="sub_logo_text">Log In</h3>
-    </div>
+<header id="header">
+    <a href="{% url 'review_service:categories' %}" class="logo">
+        <strong>LookUp</strong>
+    </a>
+    <nav>
+        <ul>
+            {% if user.is_anonymous %}
+                <li><a href="{% url 'review_service:registration' %}"><strong>Sing Up</strong></a>
+                </li>
+                <li><a href="{% url 'review_service:authorization' %}"><strong>Log In</strong></a>
+                </li>
+            {% else %}
+                <li><a href="{% url 'review_service:user' user.id %}"><strong>Hello, {{ user.username }} !</strong></a>
+                </li>
+                <li><a href="{% url 'review_service:logout' %}"><strong>Log Out</strong></a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>
+
+<div class="wrapper">
+    {% block content %}
+    {% endblock %}
+
 </div>
-{% block title %}{% endblock %}
-{% block content %}
-{% endblock %}
-<div class="footer">
-    <h3 class="sub_logo_text">Contacts</h3>
-    <h3 class="sub_logo_text">FAQ</h3>
-    <h3 class="sub_logo_text">Rules</h3>
-    <h3 class="sub_logo_text">Advertising</h3>
-</div>
+<footer id="footer" class="wrapper alt">
+    <ul>
+        <li>
+            <a href="#"><strong>Contacts</strong></a>
+        </li>
+        <li>
+            <a href="#"><strong>FAQ</strong></a>
+        </li>
+        <li>
+            <a href="#"><strong>Rules</strong></a>
+        </li>
+        <li>
+            <a href="#"><strong>Advertising</strong></a>
+        </li>
+    </ul>
+</footer>
 </body>
 </html>

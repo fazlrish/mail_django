@@ -1,8 +1,9 @@
 <!DOCTYPE html>
+{% extends "./index.html" %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Category Items</title>
+    <title>{% block title %}{{ category.name}}{% endblock %}</title>
 </head>
 <body>
 {% block content %}
@@ -10,7 +11,7 @@
         <ul>
             {% for item in categoryItemList %}
                 <li>
-                    <a href="{% url 'item' item.id %}">
+                    <a href="{% url 'review_service:item' item.category_id item.id  %}">
                         {{ item.name }}
                     </a>
                 </li>
@@ -19,6 +20,7 @@
     {% else %}
         <p>No category item</p>
     {% endif %}
+
 {% endblock %}
 </body>
 </html>
