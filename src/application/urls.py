@@ -15,8 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^review_service/',include('review_service.urls', namespace='review_service'))
+    url(r'^review/', include('review.urls', namespace='review')),
+    url(r'^accounts/', include('accounts.urls', namespace='accounts')),
+    url(r'^', include('base.urls', namespace='base'))
 ]

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% extends "base/index.html" %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{{ category.name}}{% endblock %}</title>
+</head>
+<body>
+{% block content %}
+    {% if categoryItemList %}
+        <ul>
+            {% for item in categoryItemList %}
+                <li>
+                    <a href="{% url 'base:item' item.category_id item.id  %}">
+                        {{ item.name }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No category item</p>
+    {% endif %}
+
+{% endblock %}
+</body>
+</html>

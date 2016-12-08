@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% extends "base/index.html" %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}User detail{% endblock %}</title>
+</head>
+<body>
+{% block content %}
+    <h1>{{ user.name }}</h1>
+    <p>{{ user.created_at }}</p>
+    {% if reviews %}
+        <ul>
+            {% for review in reviews %}
+                <li><p>{{ review.text }}</p></li></br>
+                <li><p>{{ review.createdAt }}</p></li></br>
+                <li><p>{{ review.categoryItem }}</p></li></br>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No reviews</p>
+    {% endif %}
+{% endblock %}
+</body>
+</html>

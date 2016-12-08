@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% extends "base/index.html" %}
+{% block content %}
+    <form action="{% url 'review:review_edit' review_id %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Edit">
+        <input type="hidden" name="next" value="{{ request.META.HTTP_REFERER }}">
+    </form>
+{% endblock %}
+</body>
+</html>

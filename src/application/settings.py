@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+from django.urls import reverse
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -37,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'review_service',
+    'review',
+    'base',
+    'accounts'
 ]
 
 MIDDLEWARE = [
@@ -85,7 +89,7 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
 
-AUTH_USER_MODEL = 'review_service.User'
+AUTH_USER_MODEL = 'accounts.User'
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -123,3 +127,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = '/home/major/workplace/python/mail_course/look_up_project/collected_static/'
 STATICFILES_DIRS = ('/home/major/workplace/python/mail_course/look_up_project/src/static/',)
+

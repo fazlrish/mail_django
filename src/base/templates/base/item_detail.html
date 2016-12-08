@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% extends "base/index.html" %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{{ item.category.name}}:{{ item.name }}{% endblock %}</title>
+</head>
+<body>
+{% block content %}
+    <h1>{{ item.name }}</h1>
+    <p>{{ item.description }}</p>
+    {% if reviews %}
+        <ul>
+            {% for review in reviews %}
+                <li><p>{{ review.text }}</p></li></br>
+                <li><p>{{ review.createdAt }}</p></li></br>
+                <li><p><a href="{% url 'accounts:user' review.user.id %}">{{ review.user }}</a></p></li></br>
+                {% if review.user == user %}
+                <li>
+                    <a href="{% url 'review:review_edit' review.id %}">Edit</a>
+                </li></br>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No reviews</p>
+    {% endif %}
+    <form action="{% url 'review:new_review' %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Добавить отзыв">
+        <input type="hidden" name="next" value="{{ next }}">
+        <input type="hidden" name="category_item" value="{{ item.id }}">
+    </form>
+
+
+{% endblock %}
+</body>
+</html>
